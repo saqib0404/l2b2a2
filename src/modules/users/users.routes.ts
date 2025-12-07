@@ -1,14 +1,13 @@
 import { Router } from "express";
 import { usersController } from "./users.controller";
+import { auth } from "../middleware/auth";
 
 const router = Router();
 
-// ! Needs To authenticate all the routes
+router.get("/users", auth.verifyJWT(), auth.verifyAdmin(), usersController.getAllUsers)
 
-router.get("/users", usersController.getAllUsers)
+router.put("/users/:userId", auth.verifyJWT(), usersController.updateUser)
 
-router.put("/users/:userId", usersController.updateUser)
-
-router.put("/users/:userId", usersController.deleteUser)
+router.put("/users/:userId", auth.verifyJWT(), auth.verifyAdmin(), usersController.deleteUser)
 
 export const usersRoutes = router

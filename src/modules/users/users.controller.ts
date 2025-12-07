@@ -20,8 +20,8 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params
-        const result = await usersServices.updateUser(Number(id), req.body)
+        const { userId } = req.params
+        const result = await usersServices.updateUser(Number(userId), req.body)
         if (result.rowCount === 0) {
             return res.status(404).json({
                 success: false,
@@ -45,8 +45,8 @@ const updateUser = async (req: Request, res: Response) => {
 
 const deleteUser = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params
-        const result = await usersServices.deleteUser(Number(id))
+        const { userId } = req.params
+        const result = await usersServices.deleteUser(Number(userId))
 
         if (result.rowCount === 0) {
             return res.status(404).json({
