@@ -4,6 +4,8 @@ import { auth } from "../middleware/auth";
 
 const router = Router();
 
+// ! Add authorization properly
+
 router.get("/users", auth.verifyJWT(), auth.verifyAdmin(), usersController.getAllUsers)
 
 router.put("/users/:userId", auth.verifyJWT(), usersController.updateUser)

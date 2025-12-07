@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import initDb from './config/db';
 import { usersRoutes } from './modules/users/users.routes';
 import { authRoutes } from './modules/auth/auth.routes';
+import { vehiclesRoutes } from './modules/vehicles/vehicles.routes';
 const app = express()
 const port = 3000;
 
@@ -15,6 +16,10 @@ initDb();
 app.use("/api/v1/auth", authRoutes)
 
 app.use("/api/v1", usersRoutes)
+
+app.use("/api/v1", vehiclesRoutes)
+
+
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!')

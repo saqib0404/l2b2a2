@@ -17,7 +17,7 @@ const initDb = async () => {
     );
   `);
 
-  // Vahicles Table
+  // Vehicles Table
   await pool.query(`
     CREATE TABLE IF NOT EXISTS vehicles (
       id SERIAL PRIMARY KEY,
